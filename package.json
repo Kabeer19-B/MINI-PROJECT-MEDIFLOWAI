@@ -1,0 +1,31 @@
+{
+  "name": "mediflow-hospital-care-system",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "node apps/mediflow/server/index.js",
+    "dev:web": "vite --config apps/mediflow/vite.config.ts",
+    "build": "vite build --config apps/mediflow/vite.config.ts",
+    "legacy:dev:web": "npm --workspace @smartcrop/web run dev",
+    "dev:mobile": "npm --workspace @smartcrop/mobile run start",
+    "legacy:build:web": "npm --workspace @smartcrop/web run build",
+    "lint:web": "npm --workspace @smartcrop/web run lint",
+    "build:contracts": "cd apps/contracts && python3.12 -m smart_contracts build"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "vite": "^8.3.5"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "multer": "^2.5.0"
+  }
+}
